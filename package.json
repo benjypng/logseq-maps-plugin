@@ -1,11 +1,11 @@
 {
-  "name": "logseq-osmmaps-plugin",
+  "name": "logseq-maps-plugin",
   "author": "benjypng",
   "description": "Create maps as part of your notes.",
   "license": "MIT",
   "logseq": {
-    "id": "logseq-osmmaps-plugin",
-    "title": "logseq-osmmaps-plugin",
+    "id": "logseq-maps-plugin",
+    "title": "logseq-maps-plugin",
     "icon": "./icon.svg",
     "main": "dist/index.html"
   },
@@ -24,7 +24,7 @@
         "@semantic-release/github",
         {
           "assets": [
-            "logseq-osmmaps-plugin.zip"
+            "logseq-maps-plugin.zip"
           ]
         }
       ]
