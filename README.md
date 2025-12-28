@@ -11,7 +11,7 @@
 - Customise marker colours
 
 ## 📸 Screenshots / Demo
-To be added.
+![my](https://github.com/user-attachments/assets/4fcaadbd-c80c-49ec-9573-8778b2a6384b)
 
 ## ⚙️ Installation
 1.  Open Logseq.
