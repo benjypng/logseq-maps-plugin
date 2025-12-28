@@ -21,15 +21,17 @@ To be added.
 
 ## 🛠 Usage & Settings
 
-#### Setting Up
+#### Setting Up (for Logseq DB)
+- Open plugin settings and customise the tag name that will be used to tag your blocks that will appear as markers on the map.
 - Open the command palette and run `Create required tag and props`.
+- This will create the tag `Location` and add two properties to the tag: `map-url` and `marker-color`
 
 #### Adding Map and Markers
-2. Tag your block with the tag `#Location`. This creates two properties: `map-url` and `marker-color`.
-3. Add the Google Maps link to your `map-url` property.
-4. Add a colour to the `marker-color` property.
-5. Go to any block on the same page and insert the map container using the slash command `Add map container`
-6. Continue to add in other blocks tagged with `#Location` and the map will pick up these locations and create them as markers
+1. Tag your block with the tag `#Location`. This creates two properties: `map-url` and `marker-color`.
+2. Add the Google Maps link to your `map-url` property.
+3. Add a colour to the `marker-color` property.
+4. Go to any block on the same page and insert the map container using the slash command `Add map container`
+5. Continue to add in other blocks tagged with `#Location` and the map will pick up these locations and create them as markers
 
 ## ☕️ Support
 If you enjoy this plugin, please consider supporting the development!
