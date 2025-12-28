@@ -1,5 +1,4 @@
-export const DEFAULT_ZOOM_KEY =
-  ':plugin.property.logseq-maps-plugin/map-default-zoom'
+export const MAP_URL_KEY = ':plugin.property.logseq-maps-plugin/map-url'
 
-export const DEFAULT_LOCATION_KEY =
-  ':plugin.property.logseq-maps-plugin/map-default-location'
+export const MARKER_COLOR_KEY =
+  ':plugin.property.logseq-maps-plugin/marker-color'

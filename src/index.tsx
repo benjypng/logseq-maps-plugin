@@ -17,6 +17,32 @@ const main = async () => {
   const isDbGraph = await logseq.App.checkCurrentIsDbGraph()
 
   if (isDbGraph) {
+    const tag = await logseq.Editor.createTag(
+      logseq.settings?.locationTag as string,
+    )
+    const mapUrlPropPage = await logseq.Editor.getProperty('map-url')
+    if (!mapUrlPropPage) {
+      await logseq.Editor.upsertProperty('map-url', {
+        type: 'url',
+        cardinality: 'one',
+        hide: false,
+        public: true,
+      })
+    }
+    const markerColorPropPage = await logseq.Editor.getProperty('marker-color')
+    if (!markerColorPropPage) {
+      await logseq.Editor.upsertProperty('marker-color', {
+        type: 'default',
+        cardinality: 'one',
+        hide: false,
+        public: true,
+      })
+    }
+    if (tag && mapUrlPropPage && markerColorPropPage) {
+      await logseq.Editor.addTagProperty(tag.uuid, mapUrlPropPage.uuid)
+      await logseq.Editor.addTagProperty(tag.uuid, markerColorPropPage.uuid)
+    }
+
     logseq.Editor.registerSlashCommand('Map: Add map container', async (e) => {
       await logseq.Editor.insertAtEditingCursor(`{{renderer :dbmap_${e.uuid}}}`)
     })

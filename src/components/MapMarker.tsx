@@ -6,15 +6,17 @@ import { svgIcon } from '../utils'
 export const MapMarker = ({
   marker,
   host,
+  markerColor,
 }: {
   marker: MarkerProps
   host: any
+  markerColor: string
 }) => {
   const map = useMap()
   return (
     <Marker
       position={marker.latlng}
-      icon={svgIcon(host, 'red', 30)}
+      icon={svgIcon(host, markerColor, 30)}
       eventHandlers={{
         click: () => {
           map.flyTo(marker.latlng, 18, {

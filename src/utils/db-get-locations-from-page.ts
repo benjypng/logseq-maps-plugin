@@ -1,5 +1,4 @@
-import { BlockEntity } from '@logseq/libs/dist/LSPlugin.user'
-
+import { MAP_URL_KEY, MARKER_COLOR_KEY } from '../constants'
 import { MarkerProps } from '../interfaces'
 import { extractLatLngFromGoogleMapsLink } from './extract-lat-lng-from-gmaps'
 
@@ -10,16 +9,21 @@ export const dbGetLocationsFromPage = async (pageUuid: string) => {
   const markerArr: MarkerProps[] = []
 
   for (const block of pageBlockTrees) {
-    if (!block.children) continue
-    if (block.children && block.children.length === 0) continue
-    const blockChildren = block.children as BlockEntity[]
-    const url = blockChildren[0]?.title
+    const prop = await logseq.Editor.getBlockProperties(block.uuid)
+    if (!prop) continue
+
+    const url = prop[MAP_URL_KEY]
     if (!url) continue
+
+    const markerColor = prop[MARKER_COLOR_KEY] ?? 'blue'
+
     const latlng = extractLatLngFromGoogleMapsLink(url)
+
     markerArr.push({
       id: block.uuid,
       latlng: latlng,
       description: block.title,
+      markerColor: markerColor,
     })
   }
 

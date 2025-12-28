@@ -55,6 +55,7 @@ export const DBMap = ({
       if (!pageUuid) return
 
       unsubscribe = logseq.DB.onBlockChanged(pageUuid, async () => {
+        //TODO: Not recursive
         const locationArr = await dbGetLocationsFromPage(pageUuid)
         if (!locationArr) return
         setMarkerArr(locationArr)
@@ -81,7 +82,12 @@ export const DBMap = ({
           {markerArr && <FitBounds markers={markerArr} />}
           {markerArr &&
             markerArr.map((marker: MarkerProps) => (
-              <MapMarker key={marker.id} marker={marker} host={host} />
+              <MapMarker
+                key={marker.id}
+                marker={marker}
+                host={host}
+                markerColor={marker.markerColor}
+              />
             ))}
           <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
