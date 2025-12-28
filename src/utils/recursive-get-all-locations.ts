@@ -5,6 +5,7 @@ export const recursivelyGetAllLocations = async (blocks: BlockEntity[]) => {
 
   const recurse = async (blocks: BlockEntity[]) => {
     for (const block of blocks) {
+      if (!block.content) continue
       if (block.content.startsWith(`{{query `)) {
         const queryRx = /\{\{query (.*?)\}\}/
         const queryString = queryRx.exec(block.content)

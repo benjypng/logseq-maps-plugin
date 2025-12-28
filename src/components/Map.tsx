@@ -44,61 +44,67 @@ const Map = ({
 
   const host = logseq.Experiments.ensureHostScope()
   useEffect(() => {
-    if (host.L) {
-      return setReady(true)
+    if (ready) return
+    let mounted = true
+
+    const load = async () => {
+      if (!host.L) {
+        await logseq.Experiments.loadScripts('../../leaflet/leaflet.js')
+        await new Promise((r) => setTimeout(r, 50))
+      }
+      if (mounted) setReady(true)
     }
-    let timer: any
-    const loadLeaflet = async () => {
-      await logseq.Experiments.loadScripts('../../leaflet/leaflet.js')
-      timer = setTimeout(async () => {
-        setReady(true)
-      }, 50)
-    }
-    loadLeaflet()
+
+    load()
     return () => {
-      timer && clearTimeout(timer)
+      mounted = false
     }
-  }, [])
+  }, [ready])
+
   if (!ready) {
     return <strong>Loading Leaflet...</strong>
+  } else {
+    return (
+      <>
+        <MapContainer
+          zoom={zoom}
+          center={centrePosition}
+          scrollWheelZoom={false}
+          dragging={true}
+          style={{ height: '400px', width: '83vh', zIndex: 0 }}
+        >
+          <SelectedTileLayer mapOption={mapOption} />
+          {defaultMarkerOnMap && (
+            <Marker
+              position={defaultMarkerOnMap}
+              icon={svgIcon(host, 'blue', 30)}
+            />
+          )}
+          {locations.map((location, index) => (
+            <Marker
+              key={location.id}
+              position={location.coords}
+              ref={(el) => {
+                markersRef.current[index] = el
+              }}
+              icon={svgIcon(host, location['marker-color'], 30)}
+            >
+              <Popup autoClose={false}>{location.description}</Popup>
+            </Marker>
+          ))}
+          <RightClickAddMarker uuid={uuid} setLocations={setLocations} />
+          <FitBounds locations={locations} />
+          <SetViewOnClick />
+        </MapContainer>
+        <MapControl
+          setMapOption={setMapOption}
+          markersRef={markersRef}
+          setLocations={setLocations}
+          uuid={uuid}
+        />
+      </>
+    )
   }
-
-  return (
-    <>
-      <MapContainer
-        zoom={zoom}
-        center={centrePosition}
-        scrollWheelZoom={false}
-        dragging={true}
-        tap={true}
-        style={{ height: '400px', width: '83vh', zIndex: 0 }}
-      >
-        <SelectedTileLayer mapOption={mapOption} />
-        {defaultMarkerOnMap && (
-          <Marker position={defaultMarkerOnMap} icon={svgIcon(host, 'blue')} />
-        )}
-        {locations.map((location, index) => (
-          <Marker
-            key={location.id}
-            position={location.coords}
-            ref={(el) => (markersRef.current[index] = el)}
-            icon={svgIcon(host, location['marker-color'])}
-          >
-            <Popup autoClose={false}>{location.description}</Popup>
-          </Marker>
-        ))}
-        <RightClickAddMarker uuid={uuid} setLocations={setLocations} />
-        <FitBounds locations={locations} />
-        <SetViewOnClick />
-      </MapContainer>
-      <MapControl
-        setMapOption={setMapOption}
-        markersRef={markersRef}
-        setLocations={setLocations}
-        uuid={uuid}
-      />
-    </>
-  )
 }
 
 export default Map

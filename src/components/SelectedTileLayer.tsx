@@ -24,7 +24,7 @@ const SelectedTileLayer = ({ mapOption }: { mapOption: string }) => {
       return (
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-          url={logseq.settings!.defaultMapUrl}
+          url={logseq.settings!.defaultMapUrl as string}
         />
       )
   }

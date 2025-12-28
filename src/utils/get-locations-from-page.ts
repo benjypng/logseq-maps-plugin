@@ -43,11 +43,14 @@ export const getLocationsFromPage = async (
   const page = await logseq.Editor.getPage(block.page.id)
   if (!page) return []
   const pbt = await logseq.Editor.getPageBlocksTree(page.name)
+  if (!pbt) return []
 
-  const locationArr = await recursivelyGetAllLocations(pbt)
+  const allLocationBlocks = await recursivelyGetAllLocations(pbt)
 
   // Map location array
-  return locationArr.map((block) => {
+  const locationArr = []
+  for (const block of allLocationBlocks) {
+    if (!block.content) continue
     const description = block.content.substring(
       0,
       block.content.indexOf('\ncoords::'),
@@ -55,12 +58,13 @@ export const getLocationsFromPage = async (
     const coords = handleCoords(block.properties?.coords)
     const waypoint = block.properties?.waypoint
     const markerColor = block.properties?.markerColor
-    return {
+    locationArr.push({
       id: block.uuid,
       description,
       coords,
       waypoint,
       'marker-color': markerColor,
-    }
-  })
+    })
+  }
+  return locationArr
 }

@@ -2,6 +2,13 @@ import { SettingSchemaDesc } from '@logseq/libs/dist/LSPlugin'
 
 export const settings: SettingSchemaDesc[] = [
   {
+    key: 'locationTag',
+    type: 'string',
+    title: '[DB Only] Location Tag',
+    description: 'Defines the tag for each location block',
+    default: 'Location',
+  },
+  {
     key: 'defaultMapUrl',
     type: 'string',
     title: 'Default Tile Layer URL',
