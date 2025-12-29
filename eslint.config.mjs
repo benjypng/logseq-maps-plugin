@@ -26,6 +26,7 @@ export default [
         'error',
         { varsIgnorePattern: '^_' },
       ],
+      'react-you-might-not-need-an-effect/no-pass-data-to-parent': 'off',
     },
   },
 ]
