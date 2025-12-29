@@ -90,7 +90,7 @@ const main = async () => {
             root = createRoot(el)
             ;(el as any)._reactRoot = root
           }
-          root.render(<DBMap pageUuid={pageUuid} blockUuid={uuid} />)
+          root.render(<DBMap pageUuid={pageUuid} />)
         }, 0)
       },
     )
