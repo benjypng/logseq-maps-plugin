@@ -1,10 +1,12 @@
 import '@logseq/libs'
+
 import { MapContainer, TileLayer } from 'react-leaflet'
+
 import { MarkerProps } from '../interfaces'
 import { FitBounds, MapMarker } from '.'
-import { SetViewOnClick } from './map-handlers/set-view-on-click'
-import { usePageMarkers } from './hooks/usePageMarkers'
 import { useLeaflet } from './hooks/useLeaflet'
+import { usePageMarkers } from './hooks/usePageMarkers'
+import { SetViewOnClick } from './map-handlers/set-view-on-click'
 
 export const DBMap = ({ pageUuid }: { pageUuid: string }) => {
   const host = logseq.Experiments.ensureHostScope()

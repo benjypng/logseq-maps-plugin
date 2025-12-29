@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+
 import { MarkerProps } from '../../interfaces'
 import { dbGetLocationsFromPage } from '../../utils'
 
