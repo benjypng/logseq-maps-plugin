@@ -1,4 +1,4 @@
-import { useEffect,useState } from 'react'
+import { useEffect, useState } from 'react'
 
 export const useLeaflet = (host: any) => {
   const [ready, setReady] = useState(!!host.L)
@@ -11,6 +11,7 @@ export const useLeaflet = (host: any) => {
         await logseq.Experiments.loadScripts('../../../leaflet/leaflet.js')
         await new Promise((r) => setTimeout(r, 50))
       }
+       
       if (mounted) setReady(true)
     }
     load()

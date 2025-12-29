@@ -1,7 +1,7 @@
 import '@logseq/libs'
 
 import { LatLngTuple, Marker as LeafletMarker } from 'leaflet'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { MapContainer, Marker, Popup } from 'react-leaflet'
 
 import { LocationProps } from '../utils/get-locations-from-page'
@@ -28,21 +28,21 @@ const Map = ({
   const [ready, setReady] = useState(false)
   const [locations, setLocations] = useState<LocationProps[]>(locationsFromPage)
   const [mapOption, setMapOption] = useState<string>('')
-  const [defaultMarkerOnMap, setDefaultMarkerOnMap] = useState<LatLngTuple>()
   const markersRef = useRef<(LeafletMarker | null)[]>([])
 
-  // Handle defaultMarker
-  useEffect(() => {
-    if (!defaultMarker && defaultMarker?.split('|').length !== 2) return
+  const defaultMarkerOnMap = useMemo(() => {
+    if (!defaultMarker) return null
+    const parts = defaultMarker.split('|')
+    if (parts.length !== 2) return null
 
-    const markerTuple = defaultMarker?.split('|')
-    setDefaultMarkerOnMap([
-      parseFloat(markerTuple[0]!.trim()),
-      parseFloat(markerTuple[1]!.trim()),
-    ])
+    return [
+      parseFloat(parts[0]!.trim()),
+      parseFloat(parts[1]!.trim()),
+    ] as LatLngTuple
   }, [defaultMarker])
 
   const host = logseq.Experiments.ensureHostScope()
+
   useEffect(() => {
     if (ready) return
     let mounted = true
@@ -52,6 +52,7 @@ const Map = ({
         await logseq.Experiments.loadScripts('../../leaflet/leaflet.js')
         await new Promise((r) => setTimeout(r, 50))
       }
+       
       if (mounted) setReady(true)
     }
 
@@ -59,7 +60,7 @@ const Map = ({
     return () => {
       mounted = false
     }
-  }, [ready])
+  }, [ready, host.L])
 
   if (!ready) {
     return <strong>Loading Leaflet...</strong>
