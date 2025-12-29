@@ -11,6 +11,7 @@ export const useLeaflet = (host: any) => {
         await logseq.Experiments.loadScripts('../../../leaflet/leaflet.js')
         await new Promise((r) => setTimeout(r, 50))
       }
+
        
       if (mounted) setReady(true)
     }
