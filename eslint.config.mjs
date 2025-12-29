@@ -4,18 +4,19 @@ import reactYouMightNotNeedAnEffect from 'eslint-plugin-react-you-might-not-need
 import simpleImportSort from 'eslint-plugin-simple-import-sort'
 import tseslint from 'typescript-eslint'
 
-export default tseslint.config(
+export default [
   eslint.configs.recommended,
   ...tseslint.configs.stylistic,
   ...tseslint.configs.recommended,
+  reactYouMightNotNeedAnEffect.configs.recommended,
   prettierConfig,
   {
     ignores: ['**/dist/', '**/leaflet/'],
   },
+
   {
     plugins: {
       'simple-import-sort': simpleImportSort,
-      'react-you-might-not-need-an-effect': reactYouMightNotNeedAnEffect,
     },
     rules: {
       'simple-import-sort/imports': 'error',
@@ -27,4 +28,4 @@ export default tseslint.config(
       ],
     },
   },
-)
+]
