@@ -10,10 +10,11 @@
     "main": "dist/index.html"
   },
   "scripts": {
-    "dev": "npx vite",
-    "build": "npx eslint . --fix && npx tsc && npx vite build",
-    "preview": "npx vite preview",
-    "prepare": "husky"
+    "dev": "bunx vite",
+    "build": "bunx vite build",
+    "build:plugin": "bunx eslint . --fix && bunx tsc && bunx vite build",
+    "prepare": "husky",
+    "lint:precommit": "echo \"Running eslint\" && bunx eslint . --fix && echo \"Running tsc\" && tsc && echo \"Running build\" && bun run build"
   },
   "release": {
     "branches": [
