@@ -26,24 +26,22 @@ const main = async () => {
         const tag = await logseq.Editor.createTag(
           logseq.settings?.locationTag as string,
         )
-        const mapUrlPropPage = await logseq.Editor.getProperty('map-url')
+        let mapUrlPropPage = await logseq.Editor.getProperty('map-url')
         if (!mapUrlPropPage) {
           await logseq.Editor.upsertProperty('map-url', {
             type: 'url',
             cardinality: 'one',
-            hide: false,
-            public: true,
           })
+          mapUrlPropPage = await logseq.Editor.getProperty('map-url')
         }
-        const markerColorPropPage =
+        let markerColorPropPage =
           await logseq.Editor.getProperty('marker-color')
         if (!markerColorPropPage) {
           await logseq.Editor.upsertProperty('marker-color', {
             type: 'default',
             cardinality: 'one',
-            hide: false,
-            public: true,
           })
+          markerColorPropPage = await logseq.Editor.getProperty('marker-color')
         }
         if (tag && mapUrlPropPage && markerColorPropPage) {
           await logseq.Editor.addTagProperty(tag.uuid, mapUrlPropPage.uuid)
