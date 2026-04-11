@@ -2,15 +2,15 @@ import '@logseq/libs'
 
 import { createRoot } from 'react-dom/client'
 
+import { LeafletMap } from './components'
 import { DBMap } from './components/DBMap'
 import css from './leaflet.css?raw'
 import { settings } from './settings'
 import {
-  getPageUuidFromBlockUuid,
   getCentrePosition,
   getLocationsFromPage,
+  getPageUuidFromBlockUuid,
 } from './utils'
-import { LeafletMap } from './components'
 
 const main = async () => {
   await logseq.UI.showMsg('logseq-maps-plugin loaded')
