@@ -6,13 +6,13 @@ import { MapContainer, Marker, Popup } from 'react-leaflet'
 
 import { LocationProps } from '../utils/get-locations-from-page'
 import { svgIcon } from '../utils/handle-icon'
+import MapControl from './MapControl'
 import { FitBounds } from './map-handlers/fit-bounds'
 import { RightClickAddMarker } from './map-handlers/right-click-add-marker'
 import { SetViewOnClick } from './map-handlers/set-view-on-click'
-import MapControl from './MapControl'
 import SelectedTileLayer from './SelectedTileLayer'
 
-const Map = ({
+export const LeafletMap = ({
   zoom,
   centrePosition,
   uuid,
@@ -52,7 +52,7 @@ const Map = ({
         await logseq.Experiments.loadScripts('../../leaflet/leaflet.js')
         await new Promise((r) => setTimeout(r, 50))
       }
-       
+
       if (mounted) setReady(true)
     }
 
@@ -107,5 +107,3 @@ const Map = ({
     )
   }
 }
-
-export default Map

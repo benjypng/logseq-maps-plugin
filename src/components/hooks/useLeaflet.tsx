@@ -12,7 +12,6 @@ export const useLeaflet = (host: any) => {
         await new Promise((r) => setTimeout(r, 50))
       }
 
-       
       if (mounted) setReady(true)
     }
     load()

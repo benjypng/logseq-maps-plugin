@@ -3,12 +3,14 @@ import '@logseq/libs'
 import { createRoot } from 'react-dom/client'
 
 import { DBMap } from './components/DBMap'
-import Map from './components/Map'
 import css from './leaflet.css?raw'
 import { settings } from './settings'
-import { getPageUuidFromBlockUuid } from './utils'
-import { getCentrePosition } from './utils/get-centre-position'
-import { getLocationsFromPage } from './utils/get-locations-from-page'
+import {
+  getPageUuidFromBlockUuid,
+  getCentrePosition,
+  getLocationsFromPage,
+} from './utils'
+import { LeafletMap } from './components'
 
 const main = async () => {
   await logseq.UI.showMsg('logseq-maps-plugin loaded')
@@ -133,7 +135,7 @@ const main = async () => {
           ;(el as any)._reactRoot = root
         }
         root.render(
-          <Map
+          <LeafletMap
             zoom={parseFloat(zoom)}
             centrePosition={centrePosition}
             uuid={uuid}

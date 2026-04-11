@@ -12,21 +12,16 @@
   "scripts": {
     "dev": "bunx vite",
     "build": "bunx vite build",
-    "build:plugin": "bunx eslint . --fix && bunx tsc && bunx vite build",
     "prepare": "husky",
-    "lint:precommit": "echo \"Running eslint\" && bunx eslint . --fix && echo \"Running tsc\" && tsc && echo \"Running build\" && bun run build"
+    "lint:precommit": "echo \"Running biome\" && bunx @biomejs/biome check --write . && echo \"Running tsc\" && tsc --noEmit"
   },
   "release": {
-    "branches": [
-      "main"
-    ],
+    "branches": ["main"],
     "plugins": [
       [
         "@semantic-release/github",
         {
-          "assets": [
-            "logseq-maps-plugin.zip"
-          ]
+          "assets": ["logseq-maps-plugin.zip"]
         }
       ]
     ]
@@ -43,27 +38,15 @@
     "react-leaflet": "^5.0.0"
   },
   "devDependencies": {
-    "@eslint/js": "^9.39.2",
-    "@types/eslint": "^9.6.1",
-    "@types/eslint-config-prettier": "^6.11.3",
+    "@biomejs/biome": "2.4.11",
     "@types/leaflet": "^1.9.21",
     "@types/node": "^25.0.3",
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",
-    "@typescript-eslint/eslint-plugin": "^8.50.1",
-    "@typescript-eslint/parser": "^8.50.1",
-    "eslint": "^9.39.2",
-    "eslint-config-prettier": "^10.1.8",
-    "eslint-plugin-prettier": "^5.5.4",
-    "eslint-plugin-react-you-might-not-need-an-effect": "^0.8.2",
-    "eslint-plugin-simple-import-sort": "^12.1.1",
     "husky": "^9.1.7",
-    "prettier": "^3.7.4",
     "typescript": "^5.9.3",
-    "typescript-eslint": "^8.50.1",
     "vite": "^7.3.0",
     "vite-plugin-logseq": "^1.1.2",
-    "vite-plugin-static-copy": "^3.1.4",
     "vite-tsconfig-paths": "^6.0.3"
   }
 }

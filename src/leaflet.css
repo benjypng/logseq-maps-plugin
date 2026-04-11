@@ -338,7 +338,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
 
 /* general typography */
 .leaflet-container {
-  font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
   font-size: 12px;
   font-size: 0.75rem;
   line-height: 1.5;
@@ -405,7 +405,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
 .leaflet-control-zoom-in,
 .leaflet-control-zoom-out {
   font:
-    bold 18px 'Lucida Console',
+    bold 18px "Lucida Console",
     Monaco,
     monospace;
   text-indent: 1px;
@@ -600,7 +600,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
   width: 24px;
   height: 24px;
   font:
-    16px/24px Tahoma,
+    16px / 24px Tahoma,
     Verdana,
     sans-serif;
   color: #757575;
@@ -622,7 +622,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
   width: 24px;
   margin: 0 auto;
 
-  -ms-filter: 'progid:DXImageTransform.Microsoft.Matrix(M11=0.70710678, M12=0.70710678, M21=-0.70710678, M22=0.70710678)';
+  -ms-filter: "progid:DXImageTransform.Microsoft.Matrix(M11=0.70710678, M12=0.70710678, M21=-0.70710678, M22=0.70710678)";
   filter: progid:DXImageTransform.Microsoft.Matrix(M11=0.70710678, M12=0.70710678, M21=-0.70710678, M22=0.70710678);
 }
 
@@ -669,7 +669,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
   pointer-events: none;
   border: 6px solid transparent;
   background: transparent;
-  content: '';
+  content: "";
 }
 
 /* Directions */
@@ -809,12 +809,12 @@ svg.leaflet-image-layer.leaflet-interactive path {
 }
 
 .leaflet-routing-icon {
-  background-image: url('leaflet.routing.icons.png');
+  background-image: url("leaflet.routing.icons.png");
   -webkit-background-size: 240px 20px;
   background-size: 240px 20px;
   background-repeat: no-repeat;
   margin: 0;
-  content: '';
+  content: "";
   display: inline-block;
   vertical-align: top;
   width: 20px;
@@ -871,7 +871,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
 
 .leaflet-routing-geocoders button {
   font:
-    bold 18px 'Lucida Console',
+    bold 18px "Lucida Console",
     Monaco,
     monospace;
   border: 1px solid #ccc;
@@ -885,12 +885,12 @@ svg.leaflet-image-layer.leaflet-interactive path {
 }
 
 .leaflet-routing-add-waypoint:after {
-  content: '+';
+  content: "+";
 }
 
 .leaflet-routing-reverse-waypoints:after {
   font-weight: normal;
-  content: '\21c5';
+  content: "\21c5";
 }
 
 .leaflet-routing-geocoders button:hover {
@@ -905,7 +905,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
 
 .leaflet-routing-geocoder-result {
   font:
-    12px/1.5 'Helvetica Neue',
+    12px / 1.5 "Helvetica Neue",
     Arial,
     Helvetica,
     sans-serif;
@@ -958,7 +958,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
   padding: 2px;
   font-size: 18px;
   font-weight: bold;
-  content: '\00d7';
+  content: "\00d7";
   text-align: center;
   cursor: pointer;
   color: #ccc;
@@ -987,7 +987,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
 }
 
 .leaflet-routing-collapse-btn:after {
-  content: '\00d7';
+  content: "\00d7";
 }
 
 .leaflet-routing-container-hide .leaflet-routing-collapse-btn {
@@ -997,7 +997,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
   display: block;
   width: 26px;
   height: 23px;
-  background-image: url('routing-icon.png');
+  background-image: url("routing-icon.png");
 }
 
 .leaflet-routing-container-hide .leaflet-routing-collapse-btn:after {
